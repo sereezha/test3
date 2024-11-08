@@ -1,0 +1,30 @@
+:root {
+  --sidebar-width: 250px;
+}
+
+.sidebar {
+  max-width: var(--sidebar-width);
+  width: 100%;
+  overflow: hidden;
+  transition: width var(--transition-duration);
+}
+
+.card {
+  padding: 16px 6px;
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  background-color: #fff;
+}
+
+.content {
+  height: 100%;
+}
+
+.toolbar {
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}

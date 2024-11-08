@@ -1,0 +1,17 @@
+.container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.list {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  overflow: auto;
+
+  &.isLoading {
+    overflow: hidden;
+  }
+}

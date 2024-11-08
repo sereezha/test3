@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  gap: 10px;
+}
+
+.container {
+  display: grid;
+  gap: 10px;
+  min-height: 500px;
+  height: 100%;
+  overflow: auto;
+}
+
+.toolbar {
+  --card-padding-top: 8px;
+  --card-padding-bottom: 8px;
+  display: flex;
+  justify-self: start;
+}

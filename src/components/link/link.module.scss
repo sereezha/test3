@@ -1,0 +1,25 @@
+.link {
+}
+
+.appearance-primary {
+  color: #0070cc;
+}
+
+.appearance-secondary {
+  color: var(--color-text);
+}
+
+.underline-hover {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.underline-always {
+  text-decoration: underline;
+}
+
+.underline-none {
+  text-decoration: none;
+}

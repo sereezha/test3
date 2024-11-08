@@ -1,0 +1,49 @@
+.layout {
+  --error-page-gap: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--error-page-gap);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--error-page-gap);
+  text-align: center;
+  color: #1a1a1f;
+}
+
+.title {
+  margin-bottom: 32px;
+  font-size: 160px;
+  line-height: 1;
+
+  @media screen and (min-width: $bp-tablet-min) {
+    margin-bottom: 24px;
+    font-size: 320px;
+    line-height: 0.84;
+  }
+
+  @media screen and (min-width: $bp-desktop-min) {
+    margin-bottom: 32px;
+    font-size: 360px;
+    line-height: 0.77;
+  }
+}
+
+.description {
+  max-width: 720px;
+  width: 100%;
+  margin-inline: auto;
+  font-size: 28px;
+  line-height: 1.14;
+
+  @media screen and (min-width: $bp-tablet-min) {
+    font-size: 40px;
+    line-height: 1;
+  }
+}

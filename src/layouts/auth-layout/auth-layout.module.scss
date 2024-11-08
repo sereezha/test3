@@ -1,0 +1,16 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.content {
+  max-width: 450px;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 24px;
+}

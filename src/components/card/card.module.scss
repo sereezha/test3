@@ -1,0 +1,15 @@
+.card {
+  --card-padding-top: 16px;
+  --card-padding-bottom: 16px;
+  --card-padding-left: 16px;
+  --card-padding-right: 16px;
+
+  border: 1px solid var(--card-border-color);
+  background-color: #fff;
+  border-radius: var(--card-border-radius);
+
+  padding-top: var(--card-padding-top);
+  padding-bottom: var(--card-padding-bottom);
+  padding-left: var(--card-padding-left);
+  padding-right: var(--card-padding-right);
+}
