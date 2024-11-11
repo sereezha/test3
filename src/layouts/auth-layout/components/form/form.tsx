@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Heading from '@/components/typography/heading';
+
 import styles from './form.module.scss';
 
 type Props = {
@@ -11,7 +13,11 @@ const Form = (props: Props) => {
   const { children, title } = props;
   return (
     <div className={styles.form}>
-      <h2 className={styles.title}>{title}</h2>
+      <Heading
+        as='h1'
+        variant='h2'>
+        {title}
+      </Heading>
       <div className={styles.content}>{children}</div>
     </div>
   );

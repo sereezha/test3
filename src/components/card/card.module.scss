@@ -4,8 +4,8 @@
   --card-padding-left: 16px;
   --card-padding-right: 16px;
 
-  border: 1px solid var(--card-border-color);
-  background-color: #fff;
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--card));
   border-radius: var(--card-border-radius);
 
   padding-top: var(--card-padding-top);

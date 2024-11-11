@@ -14,3 +14,5 @@ export type TEmailListItem = {
   description: string;
   date: string;
 };
+
+export const emailTypes: TEmailType[] = ['all', 'favorites'];

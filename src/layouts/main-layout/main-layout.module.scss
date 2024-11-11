@@ -9,7 +9,9 @@
   min-height: 100vh;
   display: grid;
   grid-template-rows: var(--header-height) 1fr;
-  background-color: #f4f7fc;
+  // background-color: hsl(var(--background));
+  background-color: hsl(var(--sidebar-background));
+
 }
 
 .container {
@@ -20,4 +22,9 @@
   padding-block: var(--main-content-block-padding);
   height: calc(100vh - var(--header-height));
   transition: grid-template-columns var(--transition-duration);
+}
+
+.content {
+  height: 100%;
+  overflow: hidden;
 }

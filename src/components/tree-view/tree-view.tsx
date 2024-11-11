@@ -1,16 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Tree, TreeApi } from 'react-arborist';
 import { useNavigate, useParams } from '@tanstack/react-router';
-import { Skeleton } from 'primereact/skeleton';
 import useResizeObserver from 'use-resize-observer';
+
+import { Skeleton } from '@/components/ui/skeleton';
 
 import { generateMailListRoute } from '../../routes-config/utils';
 import { useEmailsStore } from '../../store/emails-store';
 import { generateArrayWith } from '../../utils/generic';
 
 import { Cursor, Node } from './tree-node';
-
-import styles from './tree-view.module.scss';
 
 export type TreeNode = {
   id: string;
@@ -26,8 +25,6 @@ type Props = {
   nodes?: TreeNode[];
   isLoading?: boolean;
 };
-
-// https://drive.google.com/file/d/13IzIZf_qKvIL_SweSCyxdTjx__8e1fbg/view?usp=drive_link
 
 const TreeView = ({ nodes, isLoading }: Props) => {
   const { ref, width, height } = useResizeObserver();
@@ -50,10 +47,10 @@ const TreeView = ({ nodes, isLoading }: Props) => {
 
   if (isLoading) {
     return (
-      <div className={styles.skeletonContainer}>
+      <div className='grid gap-3'>
         {generateArrayWith(10, (item) => (
           <Skeleton
-            height='32px'
+            className='h-8'
             key={item}
           />
         ))}

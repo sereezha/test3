@@ -3,7 +3,7 @@
   width: 100%;
   height: 3px;
   border-radius: 20px;
-  background-color: currentColor;
+  background-color: hsl(var(--foreground));
 }
 
 .burger {

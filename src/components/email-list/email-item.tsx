@@ -1,11 +1,10 @@
 import React from 'react';
-import { useNavigate, useParams } from '@tanstack/react-router';
-import clsx from 'clsx';
+import { Link, useParams } from '@tanstack/react-router';
 
-import { generateEmailRoute } from '../../routes-config/utils';
-import Card from '../card/card';
+import { Text } from '@/components/typography/text';
+import { generateEmailRoute } from '@/routes-config/utils';
 
-import styles from './email-item.module.scss';
+import { Muted } from '../typography/muted';
 
 type Props = {
   id: string;
@@ -16,23 +15,24 @@ type Props = {
 
 const EmailItem = (props: Props) => {
   const { title, description, date, id } = props;
-  const navigate = useNavigate();
   const { accountId, categoryId, emailType } = useParams({
-    from: '/_layout/$emailType/$accountId/$categoryId/',
+    from: '/layout/$emailType/$accountId/$categoryId',
   });
 
   return (
-    <Card
-      className={styles.item}
-      onClick={() => {
-        navigate({
-          to: generateEmailRoute(emailType, accountId, categoryId, id),
-        });
-      }}>
-      <div className={clsx(styles.title, 'truncate')}>{title}</div>
-      <div className={clsx(styles.description, 'truncate')}>{description}</div>
-      <div className={styles.date}>{date}</div>
-    </Card>
+    <div className='isolate relative grid grid-cols-[200px_1fr_auto] items-center gap-5 text-sm cursor-pointer p-4 bg-background rounded-lg shadow-sm hover:bg-accent transition-all focus:outline-none border border-border border-solid focus:ring-2 focus:ring-primary focus:ring-opacity-50 active:scale-[0.995] '>
+      <Link
+        className='appearance-none absolute inset-0 cursor-pointer'
+        to={generateEmailRoute(emailType, accountId, categoryId, id)}
+      />
+      <Text
+        truncate
+        weight='bold'>
+        {title}
+      </Text>
+      <Text truncate>{description}</Text>
+      <Muted>{date}</Muted>
+    </div>
   );
 };
 

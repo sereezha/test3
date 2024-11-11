@@ -1,5 +1,8 @@
-.tabsContainer {
+:root {
   --tab-background-color-selected: var(--primary-color);
+}
+
+.tabsContainer {
   font-family: var(--font-family);
   display: grid;
   gap: 16px;
@@ -37,8 +40,10 @@
   border-radius: 10px;
   font-family: var(--font-family) !important;
   font-weight: 500;
+  text-decoration: none;
 
-  &[aria-selected='true'] {
+  &[aria-selected='true'],
+  &[aria-checked='true'] {
     color: #fff;
     background-color: var(--tab-background-color-selected);
   }

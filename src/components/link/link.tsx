@@ -1,33 +1,62 @@
 import React from 'react';
+import {
+  Link as RouterLink,
+  LinkProps as TanStackLinkProps,
+} from '@tanstack/react-router';
 import clsx from 'clsx';
 
 import styles from './link.module.scss';
 
-type Props = {
+type BaseProps = {
   appearance?: 'primary' | 'secondary';
   underline?: 'hover' | 'always' | 'none';
   children: React.ReactNode;
+  className?: string;
+};
+
+type ExternalLinkProps = BaseProps & {
+  external: true;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-const Link = (props: Props) => {
-  const {
-    appearance = 'primary',
-    children,
-    className,
-    underline = 'always',
-    ...rest
-  } = props;
+type InternalLinkProps = BaseProps & {
+  external?: false;
+} & Omit<TanStackLinkProps, keyof BaseProps>;
+
+type Props = ExternalLinkProps | InternalLinkProps;
+
+const Link = ({
+  appearance = 'primary',
+  children,
+  className,
+  underline = 'always',
+  external,
+  ...rest
+}: Props) => {
+  const classes = clsx(
+    styles.link,
+    styles[`appearance-${appearance}`],
+    styles[`underline-${underline}`],
+    className
+  );
+
+  if (external) {
+    return (
+      <a
+        {...rest}
+        className={classes}
+        rel='noopener noreferrer'
+        target='_blank'>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <a
+    <RouterLink
       {...rest}
-      className={clsx(
-        styles.link,
-        styles[`appearance-${appearance}`],
-        styles[`underline-${underline}`],
-        className
-      )}>
+      className={classes}>
       {children}
-    </a>
+    </RouterLink>
   );
 };
 

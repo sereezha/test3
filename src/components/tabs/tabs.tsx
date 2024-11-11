@@ -25,9 +25,6 @@ const Tabs = ({
   onChange,
   children,
   defaultValue = '0',
-  theme = 'white',
-  size = 'small',
-  cursor = 'pointer',
   selectedValue,
 }: TabProps) => {
   const [selectedTabValue, setSelectedTabValue] = useState(defaultValue);

@@ -3,23 +3,25 @@ import autoprefixer from 'autoprefixer';
 import postcssLogical from 'postcss-logical';
 import { defineConfig } from 'vite';
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
+import tailwindcss from "tailwindcss";
+import path from "path"
 
 export default defineConfig({
   plugins: [TanStackRouterVite({
 }),react()],
   resolve: {
     alias: {
-      '@': '/src',
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   css: {
     postcss: {
-      plugins: [postcssLogical, autoprefixer],
+      plugins: [postcssLogical, autoprefixer, tailwindcss()],
     },
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
-        additionalData: `@import "@/styles/breakpoints.scss";`
+        additionalData: `@use "@/styles/breakpoints.scss" as *;`
       },
     },
   },

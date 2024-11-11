@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react';
 import { GoStar, GoStarFill } from 'react-icons/go';
 import { RiMailLine, RiMailOpenFill } from 'react-icons/ri';
-import { useNavigate, useParams } from '@tanstack/react-router';
+import { Link, useParams } from '@tanstack/react-router';
 import clsx from 'clsx';
-import { Button } from 'primereact/button';
 
-import { requests } from '../../api/config/config';
+import { Button } from '@/components/ui/button';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+
 import { useEmailsStore } from '../../store/emails-store';
-import { TEmailType } from '../../types/emails';
+import { emailTypes, TEmailType } from '../../types/emails';
 import TreeView from '../tree-view/tree-view';
 
 import styles from './sidebar.module.scss';
@@ -27,21 +33,12 @@ const toolbarButtons = [
     tooltip: 'All Mails',
     icon: RiMailLine,
     iconFill: RiMailOpenFill,
-    fill: 'var(--primary-color)',
+    fill: '#2563eb',
   },
 ];
 
-const getRequestFn = (emailType: TEmailType) => {
-  const mapper = {
-    favorites: requests.getFavoriteEmailBoxes,
-    all: requests.getEmailBoxes,
-  };
-  return mapper[emailType];
-};
-
 const Sidebar = () => {
   const { emailType } = useParams({ strict: false });
-  const navigate = useNavigate();
 
   const isLoading = useEmailsStore((state) => state.isLoading);
   const favoriteFolders = useEmailsStore((state) => state.favoriteFolders);
@@ -49,9 +46,9 @@ const Sidebar = () => {
   const initFolders = useEmailsStore((state) => state.initFolders);
 
   useEffect(() => {
-    if (emailType) {
-      initFolders(emailType as TEmailType);
-    }
+    if (!emailType || !emailTypes.includes(emailType as TEmailType)) return;
+
+    initFolders(emailType as TEmailType);
   }, [emailType, initFolders]);
 
   const folders = emailType === 'favorites' ? favoriteFolders : allFolders;
@@ -64,23 +61,28 @@ const Sidebar = () => {
         {toolbarButtons.map(({ id, icon, iconFill, fill, tooltip }) => {
           const Icon = emailType === id ? iconFill : icon;
           return (
-            <Button
-              plain
-              rounded
-              text
-              icon={
-                <Icon
-                  fill={fill}
-                  size='20px'
-                />
-              }
-              key={id}
-              tooltip={tooltip}
-              tooltipOptions={{
-                position: 'top',
-              }}
-              onClick={() => navigate({ to: `/${id}` })}
-            />
+            <React.Fragment key={id}>
+              <TooltipProvider delayDuration={0}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button
+                      asChild
+                      variant='ghost'>
+                      <Link
+                        data-id={id}
+                        key={id}
+                        to={`/${id}`}>
+                        <Icon
+                          fill={fill}
+                          size='20px'
+                        />
+                      </Link>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>{tooltip}</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </React.Fragment>
           );
         })}
       </div>

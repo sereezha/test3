@@ -1,31 +1,30 @@
-.item {
-  isolation: isolate;
-  position: relative;
-  display: grid;
-  grid-template-columns: 200px 1fr auto;
-  gap: 20px;
-  font-size: 14px;
-  cursor: pointer;
+// .item {
+//   padding: 15px 20px;
+//   border: 1px solid hsl(var(--border));
+//   border-radius: var(--card-border-radius);
+//   background-color: hsl(var(--card));
+//   transition-property: background-color, transform;
+//   transition-duration: 0.1s;
 
-  &::before {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    opacity: 0;
-    transition: opacity var(--transition-duration);
-    border-radius: inherit;
-  }
+//   &::before {
+//     z-index: -1;
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     border: 1.5px solid hsl(var(--primary));
+//     opacity: 0;
+//     transition: opacity 0.1s;
+//     border-radius: inherit;
+//   }
 
-  &:hover::before {
-    opacity: 1;
-  }
-}
+//   &:hover::before {
+//     opacity: 1;
+//   }
 
-.title {
-  font-weight: 700;
-}
+//   &:active {
+//     transform: scale(0.995);
+//   }
+// }

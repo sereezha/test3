@@ -12,7 +12,7 @@ export const Route = createFileRoute(
 
 function RouteComponent() {
   const { accountId, categoryId, emailId } = useParams({
-    from: '/_layout/$emailType/$accountId/$categoryId/$emailId/',
+    from: '/_layout/$emailType/$accountId/$categoryId/$emailId',
   });
   const { data, isLoading } = useEmailQuery(accountId, categoryId, emailId);
 

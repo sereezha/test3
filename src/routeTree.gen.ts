@@ -10,13 +10,13 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as AuthImport } from './routes/auth'
-import { Route as LayoutImport } from './routes/_layout'
-import { Route as IndexImport } from './routes/index'
-import { Route as LayoutEmailTypeIndexImport } from './routes/_layout/$emailType/index'
-import { Route as LayoutEmailTypeAccountIdCategoryIdIndexImport } from './routes/_layout/$emailType/$accountId/$categoryId/index'
-import { Route as LayoutEmailTypeAccountIdCategoryIdEmailIdIndexImport } from './routes/_layout/$emailType/$accountId/$categoryId/$emailId/index'
+import { Route as rootRoute } from './routes__/__root'
+import { Route as AuthImport } from './routes__/auth'
+import { Route as LayoutImport } from './routes__/_layout'
+import { Route as IndexImport } from './routes__/index'
+import { Route as LayoutEmailTypeIndexImport } from './routes__/_layout/$emailType/index'
+import { Route as LayoutEmailTypeAccountIdCategoryIdIndexImport } from './routes__/_layout/$emailType/$accountId/$categoryId/index'
+import { Route as LayoutEmailTypeAccountIdCategoryIdEmailIdIndexImport } from './routes__/_layout/$emailType/$accountId/$categoryId/$emailId/index'
 
 // Create/Update Routes
 
