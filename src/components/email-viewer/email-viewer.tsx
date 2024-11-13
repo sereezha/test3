@@ -14,6 +14,7 @@ import Link from '../link/link';
 import { EmailHeader } from './types';
 
 import styles from './email-viewer.module.scss';
+import { Muted } from '../typography/muted';
 
 interface Props {
   header?: EmailHeader;
@@ -57,21 +58,21 @@ const EmailViewer = ({ header, content, isLoading }: Props) => {
                 variant='h3'>
                 {header.subject}
               </Heading>
-              <p>
+              <Muted>
                 from: {header.from[0].name} (
                 <Link href={`mailto:${header.to[0].address}`}>
                   {header.from[0].address}
                 </Link>
                 )
-              </p>
-              <p>
+              </Muted>
+              <Muted>
                 to: {header.to[0].name} (
                 <Link href={`mailto:${header.to[0].address}`}>
                   {header.to[0].address}
                 </Link>
                 )
-              </p>
-              <p>date: {header.date}</p>
+              </Muted>
+              <Muted>date: {header.date}</Muted>
             </div>
           </>
         )}
