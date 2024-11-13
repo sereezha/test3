@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from "react"
-import { Search, ChevronDown, Paperclip, Star } from 'lucide-react'
+import { Search, ChevronDown, Paperclip, Star, Check } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -99,6 +99,7 @@ export default function EmailSearch() {
                     <Button
                       variant="outline"
                       role="combobox"
+                      aria-expanded={false}
                       className="w-full justify-between mt-1"
                     >
                       {searchLocation.label}
@@ -115,6 +116,12 @@ export default function EmailSearch() {
                             key={location.value}
                             onSelect={() => setSearchLocation(location)}
                           >
+                            <Check
+                              className={cn(
+                                "mr-2 h-4 w-4",
+                                searchLocation.value === location.value ? "opacity-100" : "opacity-0"
+                              )}
+                            />
                             {location.label}
                           </CommandItem>
                         ))}
